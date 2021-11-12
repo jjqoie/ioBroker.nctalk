@@ -15,6 +15,10 @@
 
 Implements a bot for nextcloud talk messenger, for push notification and send commands to control your smarthome
 
+![Screenshot](img/nctalk-admin.png)
+![Screenshot](img/nctalk-objects.png)
+![Screenshot](img/nctalk-Push.jpg)
+
 ## Developer manual
 This section is intended for the developer. It can be deleted later
 
