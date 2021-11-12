@@ -47,7 +47,10 @@
         "keywords": [
             "notification",
             "messenger",
-            "bot"
+            "iobroker",
+            "nextcloud",
+            "talk",
+            "message"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
