@@ -79,6 +79,14 @@ class Nctalk extends utils.Adapter {
         console.log(this.grouplist);
     }
 
+    SetRoomsListenMode(AdminRooms) {
+        AdminRooms.forEach(element => {
+            if(element.active) {
+                this.Talk.RoomListenMode(element.token, true);
+            }
+        });
+    }
+
     /**
      * Is called when databases are connected and adapter received configuration.
      */
@@ -106,9 +114,11 @@ class Nctalk extends utils.Adapter {
         // Talk client is ready and has fetched all required information / data to handle conversations
         this.Talk.on("Ready", (listofrooms) => {
             // console.log("Talk is ready make " + listofrooms[2].token + " active");
-            this.Talk.RoomListenMode(listofrooms[2].token, true);
             // this.Talk.SendMessage(listofrooms[2].token, "OnReady Test Nachricht");
             this.CreateGroupList(this.config.AdminRooms);
+
+            this.SetRoomsListenMode(this.config.AdminRooms);
+
         });
 
         // Error
