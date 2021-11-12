@@ -30,16 +30,16 @@
             "zh-cn": "下一个云谈话"
         },
         "desc": {
-            "en": "Implements a bot for nextcloud talk messenger, for push notification and send commands to control your smarthome",
-            "de": "Implementiert einen Bot für den Nextcloud Talk Messenger, für Push-Benachrichtigungen und Sendebefehle zur Steuerung Ihres Smarthomes",
-            "ru": "Реализует бота для мессенджера nextcloud talk, для push-уведомлений и отправки команд для управления вашим умным домом.",
-            "pt": "Implementa um bot para nextcloud talk messenger, para notificação push e enviar comandos para controlar seu smarthome",
-            "nl": "Implementeert een bot voor nextcloud talk messenger, voor pushmeldingen en verzendopdrachten om je smarthome te bedienen",
-            "fr": "Implémente un bot pour nextcloud talk messenger, pour la notification push et l'envoi de commandes pour contrôler votre smarthome",
-            "it": "Implementa un bot per nextcloud talk messenger, per notifiche push e invio comandi per controllare la tua smarthome",
-            "es": "Implementa un bot para nextcloud talk messenger, para notificaciones push y envía comandos para controlar su smarthome",
-            "pl": "Wdraża bota do komunikatora Nextcloud Talk, do powiadomień push i wysyłania poleceń do sterowania smarthome",
-            "zh-cn": "为 nextcloud talk messenger 实现一个机器人，用于推送通知和发送命令来控制您的智能家居"
+            "en": "Use nextcloud Talk service to communicate with ioBroker, push notification and sending commands to control your smarthome",
+            "de": "Verwenden Sie den nextcloud Talk-Dienst, um mit ioBroker zu kommunizieren, Push-Benachrichtigungen zu senden und Befehle zu senden, um Ihr Smarthome zu steuern",
+            "ru": "Используйте сервис nextcloud Talk для связи с ioBroker, push-уведомлений и отправки команд для управления вашим умным домом",
+            "pt": "Use o serviço nextcloud Talk para se comunicar com o ioBroker, notificações push e enviar comandos para controlar seu smarthome",
+            "nl": "Gebruik de nextcloud Talk-service om te communiceren met ioBroker, pushmeldingen en het verzenden van opdrachten om uw smarthome te bedienen",
+            "fr": "Utilisez le service Nextcloud Talk pour communiquer avec ioBroker, envoyer des notifications push et envoyer des commandes pour contrôler votre smarthome",
+            "it": "Usa il servizio nextcloud Talk per comunicare con ioBroker, notifiche push e invio di comandi per controllare la tua smarthome",
+            "es": "Utilice el servicio nextcloud Talk para comunicarse con ioBroker, enviar notificaciones y enviar comandos para controlar su smarthome",
+            "pl": "Korzystaj z usługi nextcloud Talk, aby komunikować się z ioBroker, powiadamiać push i wysyłać polecenia do sterowania smarthome",
+            "zh-cn": "使用 nextcloud Talk 服务与 ioBroker 通信，推送通知和发送命令来控制您的智能家居"
         },
         "authors": [
             "Jochen Gerster <jjqoie@gmx.de>"
