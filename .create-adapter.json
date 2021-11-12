@@ -1,0 +1,47 @@
+{
+    "cli": true,
+    "target": "directory",
+    "adapterName": "nctalk",
+    "title": "Nextcloud Talk",
+    "description": "Use nextcloud Talk service to communicate with ioBroker, push notification and sending commands to control your smarthome",
+    "keywords": [
+        "iobroker",
+        "message",
+        "messenger",
+        "notification",
+        "nextcloud",
+        "talk",
+        "spreed"
+    ],
+    "expert": "no",
+    "features": [
+        "adapter"
+    ],
+    "adminFeatures": [],
+    "type": "messaging",
+    "startMode": "daemon",
+    "connectionType": "cloud",
+    "dataSource": "push",
+    "connectionIndicator": "no",
+    "language": "JavaScript",
+    "adminReact": "no",
+    "tools": [
+        "ESLint",
+        "type checking"
+    ],
+    "releaseScript": "yes",
+    "devServer": "yes",
+    "devServerPort": 8081,
+    "indentation": "Space (4)",
+    "quotes": "double",
+    "es6class": "yes",
+    "authorName": "Jochen Gerster",
+    "authorGithub": "jjqoie",
+    "authorEmail": "jjqoie@gmx.de",
+    "gitRemoteProtocol": "HTTPS",
+    "gitCommit": "no",
+    "defaultBranch": "main",
+    "license": "MIT License",
+    "dependabot": "no",
+    "creatorVersion": "2.0.1"
+}

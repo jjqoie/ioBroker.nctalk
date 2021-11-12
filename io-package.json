@@ -1,0 +1,89 @@
+{
+    "common": {
+        "name": "nctalk",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "nextcloud talk",
+        "titleLang": {
+            "en": "nextcloud talk",
+            "de": "Nextcloud-Talk",
+            "ru": "nextcloud talk",
+            "pt": "Nextcloud talk",
+            "nl": "nextcloud talk",
+            "fr": "conversation nextcloud",
+            "it": "nextcloud talk",
+            "es": "próxima charla en la nube",
+            "pl": "następna rozmowa w chmurze",
+            "zh-cn": "下一个云谈话"
+        },
+        "desc": {
+            "en": "Implements a bot for nextcloud talk messenger, for push notification and send commands to control your smarthome",
+            "de": "Implementiert einen Bot für den Nextcloud Talk Messenger, für Push-Benachrichtigungen und Sendebefehle zur Steuerung Ihres Smarthomes",
+            "ru": "Реализует бота для мессенджера nextcloud talk, для push-уведомлений и отправки команд для управления вашим умным домом.",
+            "pt": "Implementa um bot para nextcloud talk messenger, para notificação push e enviar comandos para controlar seu smarthome",
+            "nl": "Implementeert een bot voor nextcloud talk messenger, voor pushmeldingen en verzendopdrachten om je smarthome te bedienen",
+            "fr": "Implémente un bot pour nextcloud talk messenger, pour la notification push et l'envoi de commandes pour contrôler votre smarthome",
+            "it": "Implementa un bot per nextcloud talk messenger, per notifiche push e invio comandi per controllare la tua smarthome",
+            "es": "Implementa un bot para nextcloud talk messenger, para notificaciones push y envía comandos para controlar su smarthome",
+            "pl": "Wdraża bota do komunikatora Nextcloud Talk, do powiadomień push i wysyłania poleceń do sterowania smarthome",
+            "zh-cn": "为 nextcloud talk messenger 实现一个机器人，用于推送通知和发送命令来控制您的智能家居"
+        },
+        "authors": [
+            "Jochen Gerster <JochenGerster@gmx.de>"
+        ],
+        "keywords": [
+            "notification",
+            "messenger",
+            "bot"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "nctalk.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/jjqoie/ioBroker.nctalk/main/admin/nctalk.png",
+        "readme": "https://github.com/jjqoie/ioBroker.nctalk/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "messaging",
+        "messagebox": true,
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ]
+    },
+    "encryptedNative": [
+        "password"
+    ],
+    "protectedNative": [
+        "password"
+    ],
+    "native": {
+        "host": "localhost",
+        "protocol": "https",
+        "port": 443,
+        "user": "",
+        "password": "",
+        "AdminRooms" : []
+    },
+    "objects": [],
+    "instanceObjects": []
+}

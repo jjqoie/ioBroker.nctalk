@@ -1,0 +1,234 @@
+<html>
+
+<head>
+
+    <!-- Load ioBroker scripts and styles-->
+    <link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
+    <link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
+
+    <script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+
+    <script type="text/javascript" src="../../js/translate.js"></script>
+    <script type="text/javascript" src="../../lib/js/materialize.js"></script>
+    <script type="text/javascript" src="../../js/adapter-settings.js"></script>
+
+    <!-- Load our own files -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="words.js"></script>
+
+    <script type="text/javascript">
+
+        var AdminRooms = [];   // For table "AdminRooms"
+        var _onChange;
+
+        // This will be called by the admin adapter when the settings page loads
+        function load(settings, onChange) {
+            _onChange = onChange;
+            // example: select elements with id=key and class=value and insert value
+            if (!settings) return;
+
+            secret = (systemConfig && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM';
+            console.log("secret: " + secret);
+            console.log("password: " + settings.password);
+
+
+            if (settings.password && (typeof supportsFeature !== 'function' || !supportsFeature('ADAPTER_AUTO_DECRYPT_NATIVE'))) {
+                settings.password = decrypt(secret, settings.password);
+            }
+            console.log("password: " + settings.password);
+
+            $('.value').each(function () {
+                var $key = $(this);
+                var id = $key.attr('id');
+                if ($key.attr('type') === 'checkbox') {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.prop('checked', settings[id])
+                        .on('change', () => onChange())
+                        ;
+                } else {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.val(settings[id])
+                        .on('change', () => onChange())
+                        .on('keyup', () => onChange())
+                        ;
+                }
+            });
+            AdminRooms = settings.AdminRooms || [];   // For table "AdminRooms"
+            onChange(false);
+
+            console.log(AdminRooms);
+
+            if(AdminRooms.length !== 0) {
+                values2table('AdminRooms', AdminRooms, onChange);   // For table "AdminRooms"
+            }
+            else {
+              getrooms(onChange);
+            }
+
+            // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+            if (M) M.updateTextFields();
+        }
+
+        // This will be called by the admin adapter when the user presses the save button
+        function save(callback) {
+            // example: select elements with class=value and build settings object
+            var obj = {};
+            $('.value').each(function () {
+                var $this = $(this);
+                if ($this.attr('type') === 'checkbox') {
+                    obj[$this.attr('id')] = $this.prop('checked');
+                } else if ($this.attr('type') === 'number') {
+                    obj[$this.attr('id')] = parseFloat($this.val());
+                } else {
+                    obj[$this.attr('id')] = $this.val();
+                }
+            });
+
+            console.log("password: " + obj.password);
+
+            if (obj.password && (typeof supportsFeature !== 'function' || !supportsFeature('ADAPTER_AUTO_DECRYPT_NATIVE'))) {
+                obj.password = encrypt(secret, obj.password);
+            }
+
+            console.log("password: " + obj.password);
+
+            obj.AdminRooms = table2values('AdminRooms');
+            console.log(JSON.stringify(obj));
+            callback(obj);
+        }
+
+        function updatelist(onChange, roomlist) {
+          roomlist.forEach((newitem, i) => {
+
+            if (AdminRooms.findIndex((item) => {
+              return newitem.token == item.token;
+            }) == -1) {
+              AdminRooms.push(newitem);
+              onChange(true);
+
+            }
+          });
+
+        }
+
+        function getrooms(onChange) {
+
+            sendTo('nctalk.' + instance, 'rooms', { onlyActive: true, reread: false }, function (result) {
+                let arr = JSON.parse(result);
+
+                let newRoomlist = [];
+
+                for (let i = 0; i < arr.length; i++) {
+                    let newRoom = {'name': arr[i].name + "_" + arr[i].token,
+                                    'token': arr[i].token,
+                                    'type': arr[i].type,
+                                    'groups': arr[i].token,
+                                    'active': false};
+
+                    newRoomlist.push(newRoom);
+                }
+
+                updatelist(onChange, newRoomlist);
+
+                // Create update function which compares existing room list with new received list and add missing entires
+                values2table('AdminRooms', AdminRooms, onChange);   // For table "AdminRooms"
+
+            });
+
+        }
+
+        function roomsreload() {
+          getrooms(_onChange);
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="m adapter-container">
+
+        <div class="row">
+            <div class="col s12 m4 l2">
+                <img src="nctalk.png" class="logo">
+            </div>
+        </div>
+
+        <!-- Put your content here -->
+
+        <div class="row">
+             <div class="col s12 m8">
+                 <input id="host" class="value"/>
+                 <label for="host" class="translate">Host</label>
+             </div>
+             <div class="col s12 m2">
+                 <input id="port" type="number" min="1" max="65565" class="value"/>
+                 <label for="port" class="translate">Port</label>
+             </div>
+             <div class="col s12 m2">
+                 <select id="protocol" class="value">
+                     <option value="https">https</option>
+                 </select>
+                 <label for="protocol" class="translate">Protocol (only https at the moment)</label>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col s12 m4 influx1">
+                 <input id="user" class="value"/>
+                 <label for="user" class="translate">User</label>
+             </div>
+             <div class="col s12 m4 influx1">
+                 <input id="password" type="password" class="value"/>
+                 <label for="password" class="translate">Password</label>
+             </div>
+         </div>
+
+        <!-- Table for adding Windows devices
+        *                      <th data-name="_index" style="width: 30px" data-style="width: 100%; text-align: right">Context</th>
+        *                      <th data-name="regex"     class="translate" style="width: 30%" data-style="text-align: right">Context</th>
+        *                      <th data-name="room"      class="translate" data-type="select">Room</th>
+        *                      <th data-name="aaa"       class="translate" data-options="1/A;2/B;3/C;4" data-type="select">Room</th>
+        *                      <th data-name="id"        class="translate" data-type="OID">Object ID</th>
+        *                      <th data-name="enabled"   class="translate" data-type="checkbox" data-default="true">Enabled</th>
+        *                      <th data-buttons="delete up down copy" style="width: 32px"></th>
+        Conversation types
+
+1 "One to one"
+2 Group
+3 Public
+4 Changelog
+      -->
+        <div class="row">
+            <div id="tab-AdminRooms" class="col s12 page">
+                <p class="translate title">Nexcloud chat rooms</p>
+                <p class="btn-floating waves-effect waves-light blue table-button-add" onclick="roomsreload()"><i class="material-icons">autorenew</i>test</p>
+                <a>Fetch chat rooms from server and add missing chat rooms to the list</a>
+
+                <div class="col s12" id="AdminRooms">
+                    <div class="table-values-div">
+                        <table class="table-values">
+                            <thead>
+                                <tr>
+                                    <th class="header translate" data-name="name">Name</th>
+                                    <th class="header translate" data-name="token">Token (don't change)</th>
+                                    <th class="header translate" data-name="type" data-options="1/One to one;2/Group;3/Public;4/Changelog" data-type="select">Type (don't change)</th>
+                                    <th class="header translate" data-name="groups">iobroker Groups</th>
+                                    <th class="header translate" data-name="text2command" data-type="select">text2command (not yet)</th>
+                                    <th class="header translate" data-name="active" data-type="checkbox">Listen Active</th>
+                                    <th class="header" data-buttons="delete" style="width: 32px"></th>
+
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
