@@ -13,7 +13,7 @@
 
 ## nctalk adapter for ioBroker
 
-Implements a bot for nextcloud talk messenger, for push notification and send commands to control your smarthome
+Use nextcloud Talk service to communicate with ioBroker, push notification and sending commands to control your smarthome
 
 ![Screenshot](img/nctalk-admin.png)
 ![Screenshot](img/nctalk-objects.png)
