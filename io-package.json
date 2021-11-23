@@ -97,6 +97,7 @@
         "port": 443,
         "user": "",
         "password": "",
+        "debuglog": true,
         "AdminRooms": []
     },
     "objects": [],

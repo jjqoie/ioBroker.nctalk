@@ -19,7 +19,7 @@ Support for a jsonobject in rx/txmessage states
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-//const NextcloudTalklocal = require("./src/NextcloudTalk");
+//const NextcloudTalk = require("./src/nctalkclient");
 const NextcloudTalk = require("nctalkclient");
 const iobTalk = require("./lib/iobtalk");
 
@@ -106,13 +106,15 @@ class Nctalk extends utils.Adapter {
             server: this.config.host,
             user: this.config.user,
             pass: this.config.password,
-            port: this.config.port
+            port: this.config.port,
+            debug: this.config.debuglog
         });
 
         this.Talk.start(500);
 
         // Talk client is ready and has fetched all required information / data to handle conversations
         this.Talk.on("Ready", (listofrooms) => {
+            this.log.info("Talk client is ready and has fetched capabilities and room information");
             // console.log("Talk is ready make " + listofrooms[2].token + " active");
             // this.Talk.SendMessage(listofrooms[2].token, "OnReady Test Nachricht");
             this.CreateGroupList(this.config.AdminRooms);
@@ -123,7 +125,12 @@ class Nctalk extends utils.Adapter {
 
         // Error
         this.Talk.on("Error", (e) => {
-            console.log("Error Event ", e);
+            this.log.error("Error Event " + e);
+        });
+
+        // Debug
+        this.Talk.on("Debug", (e) => {
+            this.log.debug("Debug Event " + e);
         });
 
         // INFO: States and subscribes are made with each group instance of iobTalk in CreateGroupList
