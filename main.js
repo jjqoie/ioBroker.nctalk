@@ -19,7 +19,7 @@ Support for a jsonobject in rx/txmessage states
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-//const NextcloudTalk = require("./src/nctalkclient");
+//const NextcloudTalk = require("./src/nctalkclient");  // For development - have nctalkclient sources locally
 const NextcloudTalk = require("nctalkclient");
 const iobTalk = require("./lib/iobtalk");
 
@@ -50,7 +50,7 @@ class Nctalk extends utils.Adapter {
     _GroupListAdd(cfgstring, token) {
         const gs = cfgstring.split(",");
         gs.forEach(gselement => {
-            const index = this.grouplist.findIndex((glelement) => { return glelement.name == gselement });
+            const index = this.grouplist.findIndex((glelement) => { return glelement.name == gselement; });
             if (index != -1) {
                 console.log("Add element");
                 this.grouplist[index].tokenlist.push(token);
@@ -125,12 +125,20 @@ class Nctalk extends utils.Adapter {
 
         // Error
         this.Talk.on("Error", (e) => {
-            this.log.error("Error Event " + e);
+            if(typeof e === "object" && e !== null) {
+                this.log.error("Error Event" + JSON.stringify(e));
+            } else {
+                this.log.error("Error Event " + e);
+            }
         });
 
         // Debug
         this.Talk.on("Debug", (e) => {
-            this.log.debug("Debug Event " + e);
+            if(typeof e === "object" && e !== null) {
+                this.log.info("Debug Event" + JSON.stringify(e));
+            } else {
+                this.log.info("Debug Event " + e);
+            }
         });
 
         // INFO: States and subscribes are made with each group instance of iobTalk in CreateGroupList
@@ -179,7 +187,7 @@ class Nctalk extends utils.Adapter {
      */
     onStateChange(id, state) {
 
-        const as = id.split('.');
+        const as = id.split(".");
 
         const index = this.grouplist.findIndex((element) => { return element.name == as[2]; });
 

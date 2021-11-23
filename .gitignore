@@ -3,6 +3,8 @@
 !.vscode/
 !.github/
 
+src/
+
 .DS_Store
 
 *.code-workspace
