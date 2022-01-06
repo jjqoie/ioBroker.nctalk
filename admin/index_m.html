@@ -161,7 +161,7 @@
         <div class="row">
              <div class="col s12 m8">
                  <input id="host" class="value"/>
-                 <label for="host" class="translate">Host</label>
+                 <label for="host" class="translate">Host without leading http(s)://</label>
              </div>
              <div class="col s12 m2">
                  <input id="port" type="number" min="1" max="65565" class="value"/>
@@ -188,6 +188,17 @@
                 <label for="debuglog" class="translate">DebugLog</label>
             </div>
          </div>
+
+         <div class="row">
+            <div class="col s12 m4 influx1">
+                <input id="upload_path" class="value"/>
+                <label for="upload_path" class="translate">Nextclout Upload Path (/iobroker_upload)</label>
+            </div>
+            <div class="col s12 m4 input-field">
+                <input type="checkbox" class="value" id="overwrite" />
+                <label for="overwrite" class="translate">Overwrite existing files</label>
+            </div>
+        </div>
 
         <!-- Table for adding Windows devices
         *                      <th data-name="_index" style="width: 30px" data-style="width: 100%; text-align: right">Context</th>
