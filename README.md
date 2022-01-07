@@ -105,6 +105,10 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+* (Jochen Gerster) Added FileSharing
+
+
 ### 0.2.0 (2021-11-23)
 * (Jochen Gerster) Added debug logging option
 
