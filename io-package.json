@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "nctalk",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "news": {
+            "0.3.0": {
+                "en": "Added FileSharing",
+                "de": "FileSharing hinzugefügt",
+                "ru": "Добавлен FileSharing",
+                "pt": "Adicionado FileSharing",
+                "nl": "Bestandsdeling toegevoegd",
+                "fr": "Partage de fichiers ajouté",
+                "it": "Aggiunta condivisione file",
+                "es": "Uso compartido de archivos agregado",
+                "pl": "Dodano udostępnianie plików",
+                "zh-cn": "添加文件共享"
+            },
             "0.2.0": {
                 "en": "Added debug logging option",
                 "de": "Debug-Logging-Option hinzugefügt",
