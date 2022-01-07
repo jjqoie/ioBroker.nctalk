@@ -20,10 +20,10 @@ Support for a jsonobject in rx/txmessage states
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+//process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
-const NextcloudTalk = require("./src/nctalkclient");  // For development - have nctalkclient sources locally
-//const NextcloudTalk = require("nctalkclient");
+//const NextcloudTalk = require("./src/nctalkclient");  // For development - have nctalkclient sources locally
+const NextcloudTalk = require("nctalkclient");
 const iobTalk = require("./lib/iobtalk");
 const webdavsupport = require("./lib/webdavsupport");
 
@@ -135,6 +135,7 @@ class Nctalk extends utils.Adapter {
         });
 
         this.webdavsupport = new webdavsupport(this, this.config);
+        this.webdavsupport.CreateUploadPathIfnotExist();
 
         this.Talk.start(500);
 
@@ -167,7 +168,6 @@ class Nctalk extends utils.Adapter {
             }
         });
 
-        this.webdavsupport.CreateUploadPathIfnotExist();
 
         // this.webdavsupport.UploadFileFromURL("nctalk.jpg","https://raw.githubusercontent.com/jjqoie/iobroker.nctalk/main/img/nctalk-Push.jpg");
         // this.webdavsupport.UploadFileFromURL("tNpm2qxWkZ9rAXo.jpg","http://openmediavault/s/tNpm2qxWkZ9rAXo/preview");
