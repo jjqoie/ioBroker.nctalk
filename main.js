@@ -19,13 +19,35 @@ Support for a jsonobject in rx/txmessage states
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
+
+//process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+
 //const NextcloudTalk = require("./src/nctalkclient");  // For development - have nctalkclient sources locally
 const NextcloudTalk = require("nctalkclient");
 const iobTalk = require("./lib/iobtalk");
+const webdavsupport = require("./lib/webdavsupport");
 
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
+
+// let debugadapter = undefined;
+
+// global.ErrorLog = function ErrorLog(e) {
+//     if (typeof e === "object" && e !== null) {
+//         debugadapter.log.error("Error Event" + JSON.stringify(e));
+//     } else {
+//         debugadapter.log.error("Error Event " + e);
+//     }
+// };
+
+// global.DebugLog = function DebugLog(e) {
+//     if (typeof e === "object" && e !== null) {
+//         debugadapter.log.info("Debug Event" + JSON.stringify(e));
+//     } else {
+//         debugadapter.log.info("Debug Event " + e);
+//     }
+// };
 
 class Nctalk extends utils.Adapter {
     /**
@@ -43,6 +65,8 @@ class Nctalk extends utils.Adapter {
         this.on("unload", this.onUnload.bind(this));
 
         this.grouplist = [];
+
+        // debugadapter = this;
 
 
     }
@@ -81,7 +105,7 @@ class Nctalk extends utils.Adapter {
 
     SetRoomsListenMode(AdminRooms) {
         AdminRooms.forEach(element => {
-            if(element.active) {
+            if (element.active) {
                 this.Talk.RoomListenMode(element.token, true);
             }
         });
@@ -110,6 +134,9 @@ class Nctalk extends utils.Adapter {
             debug: this.config.debuglog
         });
 
+        this.webdavsupport = new webdavsupport(this, this.config);
+        this.webdavsupport.CreateUploadPathIfnotExist();
+
         this.Talk.start(500);
 
         // Talk client is ready and has fetched all required information / data to handle conversations
@@ -125,7 +152,7 @@ class Nctalk extends utils.Adapter {
 
         // Error
         this.Talk.on("Error", (e) => {
-            if(typeof e === "object" && e !== null) {
+            if (typeof e === "object" && e !== null) {
                 this.log.error("Error Event" + JSON.stringify(e));
             } else {
                 this.log.error("Error Event " + e);
@@ -134,12 +161,16 @@ class Nctalk extends utils.Adapter {
 
         // Debug
         this.Talk.on("Debug", (e) => {
-            if(typeof e === "object" && e !== null) {
+            if (typeof e === "object" && e !== null) {
                 this.log.info("Debug Event" + JSON.stringify(e));
             } else {
                 this.log.info("Debug Event " + e);
             }
         });
+
+
+        // this.webdavsupport.UploadFileFromURL("nctalk.jpg","https://raw.githubusercontent.com/jjqoie/iobroker.nctalk/main/img/nctalk-Push.jpg");
+        // this.webdavsupport.UploadFileFromURL("tNpm2qxWkZ9rAXo.jpg","http://openmediavault/s/tNpm2qxWkZ9rAXo/preview");
 
         // INFO: States and subscribes are made with each group instance of iobTalk in CreateGroupList
 
