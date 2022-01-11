@@ -19,6 +19,99 @@ Use nextcloud Talk service to communicate with ioBroker, push notification and s
 ![Screenshot](img/nctalk-objects.png)
 ![Screenshot](img/nctalk-Push.jpg)
 
+
+## How to use
+
+### Configuration
+Name - for later use maybe. No need to change it.<br />
+Token - unique id of a talk chatroom (don't change, in the future this column will be made read only)<br />
+Type - talk supports different types of chatrooms "One to one", "Group", "Public", "Changelog". Not used, just additional information for the admin. (don't change)<br />
+iobrokergroup - assigns a talk chatroom to one or multiple iobroker group. Group-Names are sperated by comma ","<br />
+text2command - not implemented yet<br />
+Listen Active - If activated the chatroom will be polled for new messages available.
+
+### Object description
+- **nctalk.*i.iobrokergroupname*.LastReceivedMessage** - Shows last received message of this iobrokergroup as string. No queuing mechanism is currently implemented. Means in case two messages arrive almost at the same time only the earlier message might be lost.
+- **nctalk.*i.iobrokergroupname*.SendMessage** - Sends string to the every talk chatroom in the same iobrokergroup<br />
+- **nctalk.*i.iobrokergroupname*.ShareFile.NextcloudPath** - path to ane existing file in nextcloud for example "/Photos/Birdie.jpg"<br />
+- **nctalk.*i.iobrokergroupname*.ShareFile.URL** - Object/JSON with two elements filename = filename to be created and the url to the ressource on the web where to download the file. Example {"filename": "snapshot.jpg", "url": "https://<username>:<password>@192.168.XXX.XXX/cgi-bin/currentpic.cgi"} <br />
+- **nctalk.*i.iobrokergroupname*.ShareFile.UploadShareObj** - Object/JSON with two elements filename = filename to be created and Buffer with binary data of the file. Example {"filename": "dafang02.png", "data": {"type": "Buffer","data": [ 255, 216, 255, 224, ....]}}
+<br />
+
+
+### Limitations
+No queuing mechanism using acknowledgement implemented yet, which can lead to losing messages in case of simultaneously requests. 
+
+### Examples
+
+
+Share file from web using **ShareFile.NextcloudPath**<br/>
+```
+"/Photos/Birdie.jpg"
+```
+
+Share file from web using **ShareFile.URL** - it allows self signed certificates and simple authentication using username:password@
+```js
+{"filename": "snapshot.jpg", "url": "https://<username>:<password>@192.168.XXX.XXX/cgi-bin/currentpic.cgi"}
+```
+
+Share file from local disk using **UploadShareObj**
+```js
+var fs = require("fs");
+
+ 
+
+fs.readFile("/opt/iobroker/iobroker-data/tmp/dafang01/dafang01.png", null , (err, data) => {
+    if (err) {
+        console.error(err)
+        return
+    }
+
+    const fileNextcloud = {
+        filename: "tests123.png",
+        data: data
+    }
+    //console.log(fileNextcloud)
+    setState("nctalk.0.kjf53yuu.ShareFile.UploadShareObj", fileNextcloud);
+})
+```
+
+Share file from web using **UploadShareObj**
+```js
+var https = require("https");
+
+var options = {
+    host: 'raw.githubusercontent.com',
+    port: 443,
+    path: '/jjqoie/iobroker.nctalk/main/img/nctalk-objects.png',
+    method: 'GET',
+};
+
+
+https.get(options, function(res) {
+    res.setEncoding('binary');
+    let chunks = [];
+
+    res.on('data', (chunk) => {
+        chunks.push(Buffer.from(chunk, 'binary'));
+    });
+
+    res.on('end', () => {
+        let binary = Buffer.concat(chunks);
+        // binary is now a Buffer that can be used as Uint8Array or as
+        // any other TypedArray for data processing in NodeJS or 
+        // passed on via the Buffer to something else.
+
+        });
+        const fileNextcloud = {
+            filename: "snapshot.png",
+            data: binary
+        }
+        setState("nctalk.0.grp2.ShareFile.UploadShareObj", fileNextcloud);
+    });
+});
+```
+
 ## Developer manual
 This section is intended for the developer. It can be deleted later
 
