@@ -23,12 +23,12 @@ Use nextcloud Talk service to communicate with ioBroker, push notification and s
 ## How to use
 
 ### Configuration
-Name - for later use maybe. No need to change it.<br />
-Token - unique id of a talk chatroom (don't change, in the future this column will be made read only)<br />
-Type - talk supports different types of chatrooms "One to one", "Group", "Public", "Changelog". Not used, just additional information for the admin. (don't change)<br />
-iobrokergroup - assigns a talk chatroom to one or multiple iobroker group. Group-Names are sperated by comma ","<br />
-text2command - not implemented yet<br />
-Listen Active - If activated the chatroom will be polled for new messages available.
+- Name - for later use maybe. No need to change it.<br />
+- Token - unique id of a talk chatroom (don't change, in the future this column will be made read only)<br />
+- Type - talk supports different types of chatrooms "One to one", "Group", "Public", "Changelog". Not used, just additional information for the admin. (don't change)<br />
+- iobrokergroup - assigns a talk chatroom to one or multiple iobroker group. Group-Names are sperated by comma ","<br />
+- text2command - not implemented yet<br />
+- Listen Active - If activated the chatroom will be polled for new messages available.
 
 ### Object description
 - **nctalk.*i.iobrokergroupname*.LastReceivedMessage** - Shows last received message of this iobrokergroup as string. No queuing mechanism is currently implemented. Means in case two messages arrive almost at the same time only the earlier message might be lost.
@@ -45,7 +45,7 @@ No queuing mechanism using acknowledgement implemented yet, which can lead to lo
 ### Examples
 
 
-Share file from web using **ShareFile.NextcloudPath**<br/>
+Share existing file using the file path inside the user's root to share **ShareFile.NextcloudPath**<br/>
 ```
 "/Photos/Birdie.jpg"
 ```
