@@ -40,26 +40,26 @@ Use nextcloud Talk service to communicate with ioBroker, push notification and s
 
 
 ### Limitations
-No queuing mechanism using acknowledgement implemented yet, which can lead to losing messages in case of simultaneously requests. 
+No queuing mechanism with handshake (producer/consumer) using the acknowledge function is implemented yet. This can lead to losing messages in case of simultaneously requests. 
 
 ### Examples
 
-
-Share existing file using the file path inside the user's root to share **ShareFile.NextcloudPath**<br/>
+####  Share existing file using the file path inside the user's root to share **ShareFile.NextcloudPath**<br/>
 ```
 "/Photos/Birdie.jpg"
 ```
 
-Share file from web using **ShareFile.URL** - it allows self signed certificates and simple authentication using username:password@
+#### Share file from web using **ShareFile.URL**
+Allows self signed certificates and simple authentication using username:password@
 ```js
 {"filename": "snapshot.jpg", "url": "https://<username>:<password>@192.168.XXX.XXX/cgi-bin/currentpic.cgi"}
 ```
+#### Blockly example from Karsten using **ShareFile.URL** - https://forum.iobroker.net/topic/49298/neuer-adapter-nextcloud-talk-messenger/53?_=1641974071507
+![Screenshot](img/1641868006253-nextcloud_talk_22.png)
 
-Share file from local disk using **UploadShareObj**
+#### Share file from local disk using **UploadShareObj**
 ```js
 var fs = require("fs");
-
- 
 
 fs.readFile("/opt/iobroker/iobroker-data/tmp/dafang01/dafang01.png", null , (err, data) => {
     if (err) {
@@ -76,7 +76,7 @@ fs.readFile("/opt/iobroker/iobroker-data/tmp/dafang01/dafang01.png", null , (err
 })
 ```
 
-Share file from web using **UploadShareObj**
+#### Share file from web using **UploadShareObj**
 ```js
 var https = require("https");
 
@@ -86,7 +86,6 @@ var options = {
     path: '/jjqoie/iobroker.nctalk/main/img/nctalk-objects.png',
     method: 'GET',
 };
-
 
 https.get(options, function(res) {
     res.setEncoding('binary');
