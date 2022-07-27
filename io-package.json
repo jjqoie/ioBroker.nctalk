@@ -1,6 +1,6 @@
 {
     "common": {
-        "name": "nctalk",
+        "name": "iobroker.nctalk",
         "version": "0.3.0",
         "news": {
             "0.3.0": {
