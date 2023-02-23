@@ -197,6 +197,12 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+* (Jochen Gerster) fix issues found by adapter checker
+* (Jochen Gerster) Ensure object id does not contain an invalid character
+* (Jochen Gerster) Update to nctalkclient 1.5.0
+
+
 ### 0.3.0 (2022-01-07)
 * (Jochen Gerster) Added FileSharing
 
