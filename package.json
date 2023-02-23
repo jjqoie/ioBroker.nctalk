@@ -1,6 +1,6 @@
 {
   "name": "iobroker.nctalk",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Use nextcloud Talk service to communicate with ioBroker, push notification and sending commands to control your smarthome",
   "author": {
     "name": "Jochen Gerster",
@@ -23,15 +23,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jjqoie/ioBroker.nctalk"
+    "url": "https://github.com/jjqoie/ioBroker.nctalk.git"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.5.1",
-    "nctalkclient": "^1.4.0",
+    "nctalkclient": "^1.5.0",
     "webdav": "^4.7.0"
   },
   "devDependencies": {
-    "@alcalzone/release-script": "^2.2.1",
+    "@alcalzone/release-script": "^3.5.9",
+    "@alcalzone/release-script-plugin-iobroker": "^3.5.9",
+    "@alcalzone/release-script-plugin-license": "^3.5.9",
+    "@alcalzone/release-script-plugin-manual-review": "^3.5.9",
     "@iobroker/testing": "^2.5.2",
     "@types/chai": "^4.2.22",
     "@types/chai-as-promised": "^7.1.4",

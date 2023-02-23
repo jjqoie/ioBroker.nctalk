@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "nctalk",
-        "version": "0.3.0",
+        "version": "0.3.1",
         "news": {
+            "0.3.1": {
+                "en": "fix issues found by adapter checker\nEnsure object id does not contain an invalid character\nUpdate to nctalkclient 1.5.0",
+                "de": "fix probleme gefunden von adapter checker\nStellen Sie sicher, dass Objekt id keinen ungültigen Charakter enthält\nUpdate auf nctalkclient 1,5.0",
+                "ru": "исправить проблемы, найденные адаптером checker\nУбедитесь, что объект не содержит недействительного характера\nОбновление в nctalkclient 1.5.0",
+                "pt": "corrigir problemas encontrados pelo verificador do adaptador\nGarantir que o objeto id não contém um caracter inválido\nAtualização para nctalkclient 1.5.0",
+                "nl": "vertaling:\nZorg dat object geen ongeldig karakter bevat\nUpdate voor nctalkclient 1.5.0",
+                "fr": "problèmes de fixation trouvés par le vérificateur de l'adaptateur\nEnsure object id does not contain an invalid character\nMise à jour de nctalkclient 1.5.0",
+                "it": "risolvere i problemi trovati da adattatore checker\nAssicurare l'oggetto id non contiene un carattere non valido\nAggiornamento al nctalkclient 1.5.0",
+                "es": "solucionar problemas encontrados por adaptador\nAsegurar que el objeto id no contenga un carácter inválido\nActualización de nctalkclient 1.5.0",
+                "pl": "problemy naprawcze wykonane przez adapter\nObiekt id nie zawiera nieważnej postaci\nNiezwykły 1,5.0",
+                "uk": "виправлено проблеми, знайдені за допомогою адаптера\nЗабезпечити ідентифікатор об'єкта не містить недійсного характеру\nОновлення на nctalkclient 1.5.0",
+                "zh-cn": "f 适应检查发现的ix问题\n确保禁止含有无效性质\n最新资料 1. 导 言"
+            },
             "0.3.0": {
                 "en": "Added FileSharing",
                 "de": "FileSharing hinzugefügt",
@@ -83,7 +96,6 @@
         "keywords": [
             "notification",
             "messenger",
-            "iobroker",
             "nextcloud",
             "talk",
             "message"

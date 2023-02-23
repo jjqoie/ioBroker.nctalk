@@ -44,7 +44,7 @@ No queuing mechanism with handshake (producer/consumer) using the acknowledge fu
 
 ### Examples
 
-####  Share existing file using the file path inside the user's root to share **ShareFile.NextcloudPath**<br/>
+####  Share existing file using **ShareFile.NextcloudPath**<br/> - string to file path inside the user's root
 ```
 "/Photos/Birdie.jpg"
 ```
@@ -197,6 +197,12 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     ### **WORK IN PROGRESS**
 -->
 
+### 0.3.1 (2023-02-23)
+* (Jochen Gerster) fix issues found by adapter checker
+* (Jochen Gerster) Ensure object id does not contain an invalid character
+* (Jochen Gerster) Update to nctalkclient 1.5.0
+
+
 ### 0.3.0 (2022-01-07)
 * (Jochen Gerster) Added FileSharing
 
@@ -210,7 +216,7 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
 ## License
 MIT License
 
-Copyright (c) 2021 Jochen Gerster <jjqoie@gmx.de>
+Copyright (c) 2023 Jochen Gerster <jjqoie@gmx.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
