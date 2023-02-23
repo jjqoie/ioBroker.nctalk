@@ -65,7 +65,6 @@
                 "zh-cn": "首次出版"
             }
         },
-        "title": "nextcloud talk",
         "titleLang": {
             "en": "nextcloud talk",
             "de": "Nextcloud-Talk",
@@ -76,6 +75,7 @@
             "it": "nextcloud talk",
             "es": "próxima charla en la nube",
             "pl": "następna rozmowa w chmurze",
+            "uk": "nextcloud talk",
             "zh-cn": "下一个云谈话"
         },
         "desc": {
