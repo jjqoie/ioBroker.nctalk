@@ -196,7 +196,7 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.4.0 (2023-02-23)
 * (Jochen Gerster) Fix missing uk translations warning of automated adapter checker
 
 ### 0.3.1 (2023-02-23)

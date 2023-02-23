@@ -1,6 +1,6 @@
 {
   "name": "iobroker.nctalk",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Use nextcloud Talk service to communicate with ioBroker, push notification and sending commands to control your smarthome",
   "author": {
     "name": "Jochen Gerster",
