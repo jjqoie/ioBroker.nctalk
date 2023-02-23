@@ -76,11 +76,11 @@ class Nctalk extends utils.Adapter {
         gs.forEach(gselement => {
             const index = this.grouplist.findIndex((glelement) => { return glelement.name == gselement; });
             if (index != -1) {
-                console.log("Add element");
+                console.log("Add element to group");
                 this.grouplist[index].tokenlist.push(token);
             }
             else {
-                console.log("Create element");
+                console.log("Create new group with first token");
                 this.grouplist.push({ name: gselement, iobTalk: gselement, tokenlist: [token] });
             }
         });
