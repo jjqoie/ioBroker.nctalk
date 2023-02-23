@@ -196,16 +196,16 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (Jochen Gerster) Fix missing uk translations warning of automated adapter checker
 
 ### 0.3.1 (2023-02-23)
 * (Jochen Gerster) fix issues found by adapter checker
 * (Jochen Gerster) Ensure object id does not contain an invalid character
 * (Jochen Gerster) Update to nctalkclient 1.5.0
 
-
 ### 0.3.0 (2022-01-07)
 * (Jochen Gerster) Added FileSharing
-
 
 ### 0.2.0 (2021-11-23)
 * (Jochen Gerster) Added debug logging option
