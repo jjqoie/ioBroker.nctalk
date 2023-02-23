@@ -197,7 +197,7 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
     ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 0.3.1 (2023-02-23)
 * (Jochen Gerster) fix issues found by adapter checker
 * (Jochen Gerster) Ensure object id does not contain an invalid character
 * (Jochen Gerster) Update to nctalkclient 1.5.0
