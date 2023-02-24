@@ -134,6 +134,8 @@ class Nctalk extends utils.Adapter {
             debug: this.config.debuglog
         });
 
+        this.log.info(`Create nctalkclient - Version: ${this.Talk.GetVersion()}`);
+
         this.webdavsupport = new webdavsupport(this, this.config);
         this.webdavsupport.CreateUploadPathIfnotExist();
 
