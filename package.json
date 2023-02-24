@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.5.1",
-    "nctalkclient": "^1.5.0",
+    "nctalkclient": "^1.6.0",
     "webdav": "^4.7.0"
   },
   "devDependencies": {
