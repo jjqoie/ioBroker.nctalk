@@ -76,11 +76,11 @@ class Nctalk extends utils.Adapter {
         gs.forEach(gselement => {
             const index = this.grouplist.findIndex((glelement) => { return glelement.name == gselement; });
             if (index != -1) {
-                console.log("Add element to group");
+                //console.log("Add element to group");
                 this.grouplist[index].tokenlist.push(token);
             }
             else {
-                console.log("Create new group with first token");
+                //console.log("Create new group with first token");
                 this.grouplist.push({ name: gselement, iobTalk: gselement, tokenlist: [token] });
             }
         });
@@ -88,7 +88,7 @@ class Nctalk extends utils.Adapter {
 
     CreateGroupList(AdminRooms) {
         AdminRooms.forEach(element => {
-            console.log(element.groups);
+            //console.log(element.groups);
             if (element.groups)
                 this._GroupListAdd(element.groups, element.token);
         });
@@ -97,10 +97,7 @@ class Nctalk extends utils.Adapter {
             element.iobTalk = new iobTalk(this, element.name, element.tokenlist);
         });
 
-        //this.grouplist[element].iobTalk = new iobTalk(this, element, null);
-
-        //this.grouplist
-        console.log(this.grouplist);
+        //console.log(this.grouplist);
     }
 
     SetRoomsListenMode(AdminRooms) {
@@ -164,9 +161,9 @@ class Nctalk extends utils.Adapter {
         // Debug
         this.Talk.on("Debug", (e) => {
             if (typeof e === "object" && e !== null) {
-                this.log.info("Debug Event" + JSON.stringify(e));
+                this.log.debug("Debug Event" + JSON.stringify(e));
             } else {
-                this.log.info("Debug Event " + e);
+                this.log.debug("Debug Event " + e);
             }
         });
 

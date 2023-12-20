@@ -29,14 +29,14 @@
             if (!settings) return;
 
             secret = (systemConfig && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM';
-            console.log("secret: " + secret);
-            console.log("password: " + settings.password);
+            //console.log("secret: " + secret);
+            //console.log("password: " + settings.password);
 
 
             if (settings.password && (typeof supportsFeature !== 'function' || !supportsFeature('ADAPTER_AUTO_DECRYPT_NATIVE'))) {
                 settings.password = decrypt(secret, settings.password);
             }
-            console.log("password: " + settings.password);
+            //console.log("password: " + settings.password);
 
             $('.value').each(function () {
                 var $key = $(this);
@@ -57,7 +57,7 @@
             AdminRooms = settings.AdminRooms || [];   // For table "AdminRooms"
             onChange(false);
 
-            console.log(AdminRooms);
+            //console.log(AdminRooms);
 
             if(AdminRooms.length !== 0) {
                 values2table('AdminRooms', AdminRooms, onChange);   // For table "AdminRooms"
@@ -85,16 +85,16 @@
                 }
             });
 
-            console.log("password: " + obj.password);
+           //console.log("password: " + obj.password);
 
             if (obj.password && (typeof supportsFeature !== 'function' || !supportsFeature('ADAPTER_AUTO_DECRYPT_NATIVE'))) {
                 obj.password = encrypt(secret, obj.password);
             }
 
-            console.log("password: " + obj.password);
+            //console.log("password: " + obj.password);
 
             obj.AdminRooms = table2values('AdminRooms');
-            console.log(JSON.stringify(obj));
+            //console.log(JSON.stringify(obj));
             callback(obj);
         }
 
