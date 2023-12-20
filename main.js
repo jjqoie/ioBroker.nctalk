@@ -76,11 +76,11 @@ class Nctalk extends utils.Adapter {
         gs.forEach(gselement => {
             const index = this.grouplist.findIndex((glelement) => { return glelement.name == gselement; });
             if (index != -1) {
-                //console.log("Add element to group");
+                this.log.debug("Add element to group");
                 this.grouplist[index].tokenlist.push(token);
             }
             else {
-                //console.log("Create new group with first token");
+                this.log.debug("Create new group with first token");
                 this.grouplist.push({ name: gselement, iobTalk: gselement, tokenlist: [token] });
             }
         });
@@ -88,7 +88,6 @@ class Nctalk extends utils.Adapter {
 
     CreateGroupList(AdminRooms) {
         AdminRooms.forEach(element => {
-            //console.log(element.groups);
             if (element.groups)
                 this._GroupListAdd(element.groups, element.token);
         });
@@ -97,7 +96,6 @@ class Nctalk extends utils.Adapter {
             element.iobTalk = new iobTalk(this, element.name, element.tokenlist);
         });
 
-        //console.log(this.grouplist);
     }
 
     SetRoomsListenMode(AdminRooms) {
@@ -141,8 +139,7 @@ class Nctalk extends utils.Adapter {
         // Talk client is ready and has fetched all required information / data to handle conversations
         this.Talk.on("Ready", (listofrooms) => {
             this.log.info("Talk client is ready and has fetched capabilities and room information");
-            // console.log("Talk is ready make " + listofrooms[2].token + " active");
-            // this.Talk.SendMessage(listofrooms[2].token, "OnReady Test Nachricht");
+
             this.CreateGroupList(this.config.AdminRooms);
 
             this.SetRoomsListenMode(this.config.AdminRooms);
