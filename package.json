@@ -26,7 +26,7 @@
     "url": "https://github.com/jjqoie/ioBroker.nctalk.git"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.2.2",
+    "@iobroker/adapter-core": "^3.2.3",
     "nctalkclient": "^1.5.0",
     "webdav": "^4.7.0"
   },
